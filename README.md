@@ -52,15 +52,32 @@ You can run the proxy directly and optionally pass the upstream URL as the first
 node mcp-proxy.js https://your-remote-mcp-server.com/mcp
 ```
 
+### Run using npx (from GitHub)
+You can run the proxy directly without cloning using `npx`:
+
+```bash
+npx -y kiennh/mcp-http-stdio https://your-remote-mcp-server.com/mcp
+```
+
+### Run using Docker
+The proxy is available as a Docker image:
+
+```bash
+docker run -i --rm \
+  -e UPSTREAM_MCP_URL="https://your-remote-mcp-server.com/mcp" \
+  -e UPSTREAM_AUTH="Bearer YOUR_TOKEN" \
+  ghcr.io/kiennh/mcp-http-stdio:latest
+```
+
 ### Integration with Antigravity
-To use this proxy with Antigravity, add it to your `mcp_config.json` (or similar configuration):
+To use this proxy with Antigravity, add it to your `mcp_config.json`:
 
 ```json
 {
   "mcpServers": {
     "my-remote-server": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-proxy.js", "https://api.example.com/mcp"],
+      "command": "npx",
+      "args": ["-y", "kiennh/mcp-http-stdio", "https://api.example.com/mcp"],
       "env": {
         "UPSTREAM_AUTH": "Bearer YOUR_TOKEN"
       }
