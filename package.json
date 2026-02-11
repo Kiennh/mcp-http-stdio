@@ -1,8 +1,11 @@
 {
   "name": "mcp-http-stdio",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "MCP stdio to HTTP proxy",
+  "main": "mcp-proxy.js",
+  "bin": {
+    "mcp-http-stdio": "./mcp-proxy.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
