@@ -1,2 +1,5 @@
 .env.example
 .mcp-session-cache
+node_modules/
+.env
+.DS_Store
